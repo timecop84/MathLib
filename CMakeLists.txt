@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(cloth_math LANGUAGES CXX)
+project(MathLib LANGUAGES CXX)
 
-add_library(cloth_math STATIC
+add_library(MathLib STATIC
     src/MathUtils.cpp
 )
 
-target_include_directories(cloth_math
+target_include_directories(MathLib
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
