@@ -1,0 +1,51 @@
+# MathLib
+
+A small C++ math helper library built as a **static library** with CMake.
+
+It provides:
+- `Vector` and `Matrix` convenience wrappers (ngl-compatible style) backed by **GLM** types
+- Common math utilities in `math::utils` (clamp/lerp/smoothstep/map)
+- Vector helpers (distance/normalize/angle utilities)
+- Random helpers (random floats/ints/vectors)
+- Easing functions (quad/cubic)
+- Simple geometric tests (point-in-sphere, sphere intersection, closest point on line)
+- Basic statistics helpers (average/variance/stddev)
+
+## Project layout
+- `include/` public headers (`MathUtils.h`, `Vector.h`, `Matrix.h`)
+- `src/` implementation (`MathUtils.cpp`)
+
+## Dependencies
+- **GLM** (header-only)
+  - If `external/glm` exists at the repo root, CMake will auto-add it.
+  - Or set `MATHLIB_GLM_INCLUDE_DIR` to your GLM include directory.
+
+## Build
+
+```powershell
+cmake -S . -B build
+cmake --build build --config Release
+```
+
+This produces the static library target: `MathLib`.
+
+## Using in your project
+
+### CMake (add as subdirectory)
+
+```cmake
+add_subdirectory(path/to/MathLib)
+
+target_link_libraries(your_target PRIVATE MathLib)
+```
+
+### Example
+
+```cpp
+#include <MathUtils.h>
+
+int main() {
+  float v = math::utils::clamp(1.5f, 0.0f, 1.0f);
+  (void)v;
+}
+```
